@@ -8,6 +8,7 @@
 - Jenny Nguyen — [@jennyncodes](https://github.com/jennyncodes)
 
 ## Overview
+
 This project is about learning how to build, train, analyze, and modify a deep network for a recognition task.
 
 ## Project Description
@@ -26,14 +27,16 @@ MNIST data downloads automatically into `data/` on first run.
 
 ## Scripts
 
-| Script | Task | Description |
-|---|---|---|
-| `train.py` | 1 | Build CNN, train on MNIST, save model |
-| `evaluate.py` | 1 | Load saved model, evaluate on test set and handwritten digits |
-| `analyze.py` | 2 | Visualize first-layer filters and their effect on images |
-| `greek.py` | 3 | Transfer learning for Greek letter recognition |
-| `transformer.py` | 4 | Transformer-based MNIST classifier |
-| `experiment.py` | 5 | Automated architecture search over multiple dimensions |
+
+| Script           | Task | Description                                                   |
+| ---------------- | ---- | ------------------------------------------------------------- |
+| `train.py`       | 1    | Build CNN, train on MNIST, save model                         |
+| `evaluate.py`    | 1    | Load saved model, evaluate on test set and handwritten digits |
+| `analyze.py`     | 2    | Visualize first-layer filters and their effect on images      |
+| `greek.py`       | 3    | Transfer learning for Greek letter recognition                |
+| `transformer.py` | 4    | Transformer-based MNIST classifier                            |
+| `experiment.py`  | 5    | Automated architecture search over multiple dimensions        |
+
 
 ## Usage
 
@@ -63,7 +66,8 @@ python experiment.py
 │   ├── alpha/
 │   ├── beta/
 │   └── gamma/
-├── handwritten_digits/    ← your own handwritten digit images
+├── handwritten_digits/    ← handwritten digit images
 └── docs/
     └── project5-spec.md
 ```
+
