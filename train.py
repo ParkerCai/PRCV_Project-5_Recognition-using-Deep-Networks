@@ -168,7 +168,7 @@ def main(argv):
     train_losses = []
     train_counter = []
     test_losses = []
-    test_counter = [i * len(train_loader.dataset) for i in range(n_epochs + 1)]
+    test_counter = [i * len(train_set) for i in range(n_epochs + 1)]
 
     # Evaluate once before training to see baseline with random weights
     test_epoch(model, test_loader, test_losses)
