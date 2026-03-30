@@ -37,12 +37,12 @@ MNIST data downloads automatically into `data/` on first run.
 
 | Script             | Task | Description                                                   |
 | ------------------ | ---- | ------------------------------------------------------------- |
-| `train.py`       | 1    | Build CNN, train on MNIST, save model                         |
-| `evaluate.py`    | 1    | Load saved model, evaluate on test set and handwritten digits |
-| `analyze.py`     | 2    | Visualize first-layer filters and their effect on images      |
-| `greek.py`       | 3    | Transfer learning for Greek letter recognition                |
-| `transformer.py` | 4    | Transformer-based MNIST classifier                            |
-| `experiment.py`  | 5    | Automated architecture search over multiple dimensions        |
+| `train.py`         | 1    | Build CNN, train on MNIST, save model                         |
+| `evaluate.py`      | 1    | Load saved model, evaluate on test set and handwritten digits |
+| `analyze.py`       | 2    | Visualize first-layer filters and their effect on images      |
+| `greek.py`         | 3    | Transfer learning for Greek letter recognition                |
+| `transformer.py`   | 4    | Transformer-based MNIST classifier                            |
+| `experiment.py`    | 5    | Automated architecture search over multiple dimensions        |
 
 ## Usage
 
@@ -66,6 +66,8 @@ python experiment.py
 ├── greek.py
 ├── transformer.py
 ├── experiment.py
+├── utils/                 ← Helper Functions
+│   └── plot.py            ← Plotting utilities            
 ├── data/                  ← MNIST (auto-downloaded)
 ├── results/               ← saved models, plots
 ├── greek_letters/         ← Greek letter training images
