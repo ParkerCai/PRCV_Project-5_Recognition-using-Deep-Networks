@@ -188,6 +188,10 @@ def main(argv):
     plt.savefig("results/training_curves.png")
     plt.show()
 
+    # Task 1D: Save the network to a file
+    torch.save(model.state_dict(), "results/mnist_model.pth")
+    print("Model saved to results/mnist_model.pth")
+
 
 if __name__ == "__main__":
     main(sys.argv)
