@@ -17,7 +17,11 @@ Build, train, and analyze deep networks for digit and symbol recognition using t
 
 ## CNN Architecture
 
-![CNN Architecture](results/cnn-architecture.png)
+![CNN Architecture](results\MNIST-Digit-NN-Architecture.svg)
+
+## Training Curves
+
+![Training Curves](results/training_curves.png)
 
 ## Setup
 

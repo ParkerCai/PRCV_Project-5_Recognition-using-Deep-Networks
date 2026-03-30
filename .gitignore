@@ -10,5 +10,5 @@ __pycache__/
 data/
 
 # OS files
-desktop.ini
+*.ini
 .DS_Store
