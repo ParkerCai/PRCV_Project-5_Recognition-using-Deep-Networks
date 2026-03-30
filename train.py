@@ -12,6 +12,7 @@ import sys
 import torch
 import torch.nn as nn  # neural network layers
 import torch.nn.functional as F  # convolutional layers and max pooling
+import torch.optim as optim  # optimizer for training
 import torchvision  # MNIST dataset
 import matplotlib.pyplot as plt
 
@@ -56,9 +57,59 @@ class Network(nn.Module):
         return x  # output
 
 
+def train_epoch(
+    model, train_loader, optimizer, epoch, train_losses, train_counter, log_interval=10
+):
+    """Train the model for one epoch with per-batch logging."""
+    model.train()
+    for batch_idx, (data, target) in enumerate(train_loader):
+        optimizer.zero_grad()  # reset gradients
+        output = model(data)
+        loss = F.nll_loss(output, target)  # negative log likelihood loss
+        loss.backward()  # backpropagate the loss
+        optimizer.step()  # update the weights using SGD
+        if batch_idx % log_interval == 0:
+            print(
+                "Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}".format(
+                    epoch,
+                    batch_idx * len(data),
+                    len(train_loader.dataset),
+                    100.0 * batch_idx / len(train_loader),
+                    loss.item(),
+                )
+            )
+            train_losses.append(loss.item())
+            train_counter.append(
+                (batch_idx * 64) + ((epoch - 1) * len(train_loader.dataset))
+            )
+
+
+def test_epoch(model, test_loader, test_losses):
+    """Evaluate the model on a dataset. Appends avg loss and returns accuracy."""
+    model.eval()
+    test_loss = 0
+    correct = 0
+    with torch.no_grad():
+        for data, target in test_loader:
+            output = model(data)
+            test_loss += F.nll_loss(output, target, reduction="sum").item()
+            pred = output.argmax(dim=1)
+            correct += pred.eq(target).sum().item()
+    test_loss /= len(test_loader.dataset)
+    test_losses.append(test_loss)
+    accuracy = 100.0 * correct / len(test_loader.dataset)
+    print(
+        "\nTest set: Avg. loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n".format(
+            test_loss, correct, len(test_loader.dataset), accuracy
+        )
+    )
+    return accuracy
+
+
 def main(argv):
     """
     Main function to load MNIST data and plot the first 6 examples from the test set.
+    Build network, train for 5 epochs, save model.
     """
 
     # Task 1A: Load MNIST data
@@ -86,6 +137,7 @@ def main(argv):
     test_loader = torch.utils.data.DataLoader(test_set, batch_size=1000, shuffle=False)
 
     # Plot the first 6 examples from the test set
+    # 2x3 grid of subplots 2d array axes
     fig, axes = plt.subplots(2, 3, figsize=(8, 5))
     for i, ax in enumerate(axes.flat):
         image, label = test_set[i]
@@ -101,6 +153,40 @@ def main(argv):
     print(f"Training set size: {len(train_set)}")
     print(f"Test set size:     {len(test_set)}")
     print(f"Image shape:       {train_set[0][0].shape}")
+
+    # Task 1B: Build the network
+    model = Network()
+    print(model)
+
+    # Task 1C: Train the model
+    n_epochs = 5
+    learning_rate = 0.01
+    momentum = 0.5
+    optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=momentum)
+
+    # Initialize lists to store loss and counter values
+    train_losses = []
+    train_counter = []
+    test_losses = []
+    test_counter = [i * len(train_loader.dataset) for i in range(n_epochs + 1)]
+
+    # Evaluate once before training to see baseline with random weights
+    test_epoch(model, test_loader, test_losses)
+    # Train
+    for epoch in range(1, n_epochs + 1):
+        train_epoch(model, train_loader, optimizer, epoch, train_losses, train_counter)
+        test_epoch(model, test_loader, test_losses)
+
+    # Plot training curve (per-batch train loss + per-epoch test loss)
+    fig = plt.figure()
+    plt.plot(train_counter, train_losses, color="blue")
+    plt.scatter(test_counter, test_losses, color="red")
+    plt.legend(["Train Loss", "Test Loss"], loc="upper right")
+    plt.xlabel("Number of training examples seen")
+    plt.ylabel("Negative log likelihood loss")
+    plt.tight_layout()
+    plt.savefig("results/training_curves.png")
+    plt.show()
 
 
 if __name__ == "__main__":
