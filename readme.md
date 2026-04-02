@@ -23,6 +23,11 @@ Build, train, and analyze deep networks for digit and symbol recognition using t
 
 ![Training Curves](results/training_curves.png)
 
+## Conv1 Filters and Effects
+
+![Conv1 Filters](results/conv1_filters.png)
+![Filtered Images](results/filtered_images.png)
+
 ## Setup
 
 Requires Python 3.13+.

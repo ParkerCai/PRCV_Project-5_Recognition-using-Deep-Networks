@@ -22,11 +22,11 @@ class Network(nn.Module):
 
     Architecture:
     Input: 28x28x1 (grayscale image), 784 pixels input
-        conv1 (1->10, 5x5) ->
-        maxpool(2x2) + relu ->
-        conv2 (10->20, 5x5) ->
+        conv1 24x24(padding=2, valid convolution) (1->10, 5x5 kernel) ->
+        maxpool 2x2 (translational invariance, 12x12x10 output) + relu ->
+        conv2 8x8(=12-2-2pad, valid convolution) (10->20, 5x5 kernel) ->
         dropout(0.5) ->
-        maxpool(2x2) + relu ->
+        maxpool 2x2 (4x4x20 output) + relu ->
         flatten -> fully connected Linear layer fc1 (320->50) + relu ->
         fully connected Linear layer fc2 (50->10) + log_softmax -> output
     Output: log-probability distribution over 10 digit classes
@@ -118,7 +118,9 @@ def main(argv):
     transform = torchvision.transforms.Compose(
         [
             torchvision.transforms.ToTensor(),
-            torchvision.transforms.Normalize((0.1307,), (0.3081,)),
+            torchvision.transforms.Normalize(
+                (0.1307,), (0.3081,)
+            ),  # mean(mu) and std(sigma) from MNIST
         ]
     )
 
