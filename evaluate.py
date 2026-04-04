@@ -18,18 +18,21 @@ from PIL import Image
 from train import Network
 
 
-# load and preprocess a handwritten digit image
+# Load and preprocess a handwritten digit image
 # had to invert the image because our photos are black digit on white
 # but MNIST is the opposite (white on black)
 def load_handwritten_digit(path):
     img = Image.open(path).convert("L")
     img = img.resize((28, 28), Image.LANCZOS)
     tensor = TF.to_tensor(img)
-    tensor = 1.0 - tensor 
-    tensor = TF.normalize(tensor, (0.1307,), (0.3081,))
+    tensor = 1.0 - tensor
+    tensor = TF.normalize(
+        tensor, (0.1307,), (0.3081,)
+    )  # mean(mu) and std(sigma) from MNIST
     return tensor
 
- # goes through the handwritten digit folder and tests each one
+
+# Go through the handwritten digit folder and tests each one
 def evaluate_handwritten(model, digits_dir):
     digit_files = []
     for d in range(10):
@@ -69,7 +72,7 @@ def evaluate_handwritten(model, digits_dir):
 
     print(f"\ngot {correct} out of {len(digit_files)} right")
 
-    # plot them in a grid
+    # Plot them in a grid
     cols = 5
     rows = (len(images) + cols - 1) // cols
     fig, axes = plt.subplots(rows, cols, figsize=(10, 4 * rows))
@@ -90,6 +93,7 @@ def evaluate_handwritten(model, digits_dir):
     plt.tight_layout()
     plt.savefig("results/handwritten_predictions.png")
     plt.show()
+
 
 def main(argv):
     """Load saved model, run on first 10 test examples, plot first 9 with predictions."""
@@ -112,7 +116,7 @@ def main(argv):
     model = Network()
     model.load_state_dict(torch.load("results/mnist_model.pth", weights_only=True))
     model.eval()  # set to evaluation mode, each value * (1 - dropout rate)
-    # so the same pattern will generate the same output each time. 
+    # so the same pattern will generate the same output each time.
 
     # Run on the first 10 test examples
     print("Output values (log-probabilities), predicted label, and correct label:")
@@ -150,6 +154,7 @@ def main(argv):
     else:
         digits_dir = "handwritten_digits"
     evaluate_handwritten(model, digits_dir)
+
 
 if __name__ == "__main__":
     main(sys.argv)

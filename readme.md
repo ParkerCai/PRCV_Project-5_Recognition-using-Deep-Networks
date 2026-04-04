@@ -23,6 +23,11 @@ Build, train, and analyze deep networks for digit and symbol recognition using t
 
 ![Training Curves](results/training_curves.png)
 
+## Conv1 Filters and Effects
+
+![Conv1 Filters](results/conv1_filters.png)
+![Filtered Images](results/filtered_images.png)
+
 ## Setup
 
 Requires Python 3.13+.
@@ -70,11 +75,12 @@ python experiment.py
 │   └── plot.py            ← Plotting utilities            
 ├── data/                  ← MNIST (auto-downloaded)
 ├── results/               ← saved models, plots
-├── greek_letters/         ← Greek letter training images
+├── greek_train/         ← Greek letter training images
 │   ├── alpha/
 │   ├── beta/
 │   └── gamma/
 ├── handwritten_digits/    ← handwritten digit images
+├── handwritten_greeks/    ← handwritten greek letter images
 └── docs/
     └── project5-spec.md
 ```
