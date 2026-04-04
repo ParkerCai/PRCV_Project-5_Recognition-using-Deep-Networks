@@ -56,14 +56,14 @@ def build_greek_model():
     for param in model.parameters():
         param.requires_grad = False
 
-    # swap out the last layer for one with 3 outputs instead of 10
-    model.fc2 = nn.Linear(50, 3)
+    # swap out the last layer for one with 6 outputs instead of 10
+    model.fc2 = nn.Linear(50, 6)
     print(model)
     return model
 
 # load and test our own handwritten greek letters
 def evaluate_own_greek(model, own_path):
-    class_names = ["alpha", "beta", "gamma"]
+    class_names = ["alpha", "beta", "gamma", "pi", "sigma", "theta"]
 
     transform = torchvision.transforms.Compose([
         torchvision.transforms.Resize((128, 128)),
