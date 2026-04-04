@@ -75,11 +75,12 @@ python experiment.py
 │   └── plot.py            ← Plotting utilities            
 ├── data/                  ← MNIST (auto-downloaded)
 ├── results/               ← saved models, plots
-├── greek_letters/         ← Greek letter training images
+├── greek_train/         ← Greek letter training images
 │   ├── alpha/
 │   ├── beta/
 │   └── gamma/
 ├── handwritten_digits/    ← handwritten digit images
+├── handwritten_greeks/    ← handwritten greek letter images
 └── docs/
     └── project5-spec.md
 ```
