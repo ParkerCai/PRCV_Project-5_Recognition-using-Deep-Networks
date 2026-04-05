@@ -28,6 +28,9 @@ Build, train, and analyze deep networks for digit and symbol recognition using t
 ![Conv1 Filters](results/conv1_filters.png)
 ![Filtered Images](results/filtered_images.png)
 
+## Handwritten Greek Letter Files
+https://drive.google.com/drive/folders/1FaYHNvMobunlO5ii88R0_tRXaNvm0Cpw?usp=drive_link
+
 ## Setup
 
 Requires Python 3.13+.
@@ -40,14 +43,16 @@ MNIST data downloads automatically into `data/` on first run.
 
 ## Scripts
 
-| Script             | Task | Description                                                   |
-| ------------------ | ---- | ------------------------------------------------------------- |
-| `train.py`         | 1    | Build CNN, train on MNIST, save model                         |
-| `evaluate.py`      | 1    | Load saved model, evaluate on test set and handwritten digits |
-| `analyze.py`       | 2    | Visualize first-layer filters and their effect on images      |
-| `greek.py`         | 3    | Transfer learning for Greek letter recognition                |
-| `transformer.py`   | 4    | Transformer-based MNIST classifier                            |
-| `experiment.py`    | 5    | Automated architecture search over multiple dimensions        |
+| Script               | Task | Description                                                   |
+| -------------------- | ---- | ------------------------------------------------------------- |
+| `train.py`           | 1    | Build CNN, train on MNIST, save model                         |
+| `evaluate.py`        | 1    | Load saved model, evaluate on test set and handwritten digits |
+| `analyze.py`         | 2    | Visualize first-layer filters and their effect on images      |
+| `greek.py`           | 3    | Transfer learning for Greek letter recognition                |
+| `transformer.py`     | 4    | Transformer-based MNIST classifier                            |
+| `experiment.py`      | 5    | Automated architecture search over multiple dimensions        |
+| `greek_experiment.py`| EXT  | Experiment with greek letter transfer learning                |
+
 
 ## Usage
 
@@ -60,6 +65,7 @@ python analyze.py
 python greek.py
 python transformer.py
 python experiment.py
+python greek_experiment.py
 ```
 
 ## Project Structure
@@ -71,6 +77,7 @@ python experiment.py
 ├── greek.py
 ├── transformer.py
 ├── experiment.py
+├── greek_experiment.py
 ├── utils/                 ← Helper Functions
 │   └── plot.py            ← Plotting utilities            
 ├── data/                  ← MNIST (auto-downloaded)
@@ -79,8 +86,12 @@ python experiment.py
 │   ├── alpha/
 │   ├── beta/
 │   └── gamma/
+│   └── pi/                ← Greek letter training images for extensions
+│   └── sigma/
+│   └── theta/
 ├── handwritten_digits/    ← handwritten digit images
 ├── handwritten_greeks/    ← handwritten greek letter images
 └── docs/
     └── project5-spec.md
 ```
+
