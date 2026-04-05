@@ -28,7 +28,7 @@ Build, train, and analyze deep networks for digit and symbol recognition using t
 ![Conv1 Filters](results/conv1_filters.png)
 ![Filtered Images](results/filtered_images.png)
 
-## Handwritten Greek Letter Files
+## Handwritten Greek Letter File
 https://drive.google.com/drive/folders/1FaYHNvMobunlO5ii88R0_tRXaNvm0Cpw?usp=drive_link
 
 ## Setup
