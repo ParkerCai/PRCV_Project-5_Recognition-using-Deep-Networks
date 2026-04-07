@@ -28,8 +28,24 @@ Build, train, and analyze deep networks for digit and symbol recognition using t
 ![Conv1 Filters](results/conv1_filters.png)
 ![Filtered Images](results/filtered_images.png)
 
-## Handwritten Greek Letter File
-https://drive.google.com/drive/folders/1FaYHNvMobunlO5ii88R0_tRXaNvm0Cpw?usp=drive_link
+## Greek Letter Transfer Learning (Task 3)
+
+![Greek Training Loss](results/greek_training_loss.png)
+![Own Greek Predictions](results/own_greek_predictions.png)
+
+Handwritten Greek letter training data: https://drive.google.com/drive/folders/1FaYHNvMobunlO5ii88R0_tRXaNvm0Cpw?usp=drive_link
+
+## Transformer Training Curves (Task 4)
+
+![Transformer Training Curves](results/transformer_training_curves.png)
+
+## Experiment Results (Task 5)
+
+![Experiment Results](results/experiment_results.png)
+
+## Greek Letter Experiment (Extension)
+
+![Greek Experiment Results](results/greek_experiment_results.png)
 
 ## Setup
 
@@ -78,8 +94,9 @@ python greek_experiment.py
 ├── transformer.py
 ├── experiment.py
 ├── greek_experiment.py
-├── utils/                 ← Helper Functions
-│   └── plot.py            ← Plotting utilities            
+├── utils/                            ← Helper Functions
+│   ├── plot.py                       ← Plotting utilities
+│   └── NetTransformer-template.py    ← Transformer template
 ├── data/                  ← MNIST (auto-downloaded)
 ├── results/               ← saved models, plots
 ├── greek_train/         ← Greek letter training images
@@ -94,4 +111,3 @@ python greek_experiment.py
 └── docs/
     └── project5-spec.md
 ```
-
