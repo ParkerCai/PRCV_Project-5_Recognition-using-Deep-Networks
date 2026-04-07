@@ -68,6 +68,7 @@ MNIST data downloads automatically into `data/` on first run.
 | `transformer.py`     | 4    | Transformer-based MNIST classifier                            |
 | `experiment.py`      | 5    | Automated architecture search over multiple dimensions        |
 | `greek_experiment.py`| EXT  | Experiment with greek letter transfer learning                |
+| `live_digit.py`     | EXT  | Live webcam digit recognition with CNN inference              |
 
 
 ## Usage
@@ -82,6 +83,7 @@ python greek.py
 python transformer.py
 python experiment.py
 python greek_experiment.py
+python live_digit.py
 ```
 
 ## Project Structure
@@ -94,6 +96,7 @@ python greek_experiment.py
 ├── transformer.py
 ├── experiment.py
 ├── greek_experiment.py
+├── live_digit.py
 ├── utils/                            ← Helper Functions
 │   ├── plot.py                       ← Plotting utilities
 │   └── NetTransformer-template.py    ← Transformer template
