@@ -47,6 +47,12 @@ Handwritten Greek letter training data: https://drive.google.com/drive/folders/1
 
 ![Greek Experiment Results](results/greek_experiment_results.png)
 
+## Live Digit Recognition (Extension)
+
+![Live Digit Demo](results/live_digit_demo_readme.gif)
+
+![Live Digit Demo Images](results/live_screenshots_combined.png)
+
 ## Setup
 
 Requires Python 3.13+.
@@ -59,17 +65,16 @@ MNIST data downloads automatically into `data/` on first run.
 
 ## Scripts
 
-| Script               | Task | Description                                                   |
-| -------------------- | ---- | ------------------------------------------------------------- |
-| `train.py`           | 1    | Build CNN, train on MNIST, save model                         |
-| `evaluate.py`        | 1    | Load saved model, evaluate on test set and handwritten digits |
-| `analyze.py`         | 2    | Visualize first-layer filters and their effect on images      |
-| `greek.py`           | 3    | Transfer learning for Greek letter recognition                |
-| `transformer.py`     | 4    | Transformer-based MNIST classifier                            |
-| `experiment.py`      | 5    | Automated architecture search over multiple dimensions        |
-| `greek_experiment.py`| EXT  | Experiment with greek letter transfer learning                |
-| `live_digit.py`     | EXT  | Live webcam digit recognition with CNN inference              |
-
+| Script                  | Task | Description                                                   |
+| ----------------------- | ---- | ------------------------------------------------------------- |
+| `train.py`            | 1    | Build CNN, train on MNIST, save model                         |
+| `evaluate.py`         | 1    | Load saved model, evaluate on test set and handwritten digits |
+| `analyze.py`          | 2    | Visualize first-layer filters and their effect on images      |
+| `greek.py`            | 3    | Transfer learning for Greek letter recognition                |
+| `transformer.py`      | 4    | Transformer-based MNIST classifier                            |
+| `experiment.py`       | 5    | Automated architecture search over multiple dimensions        |
+| `greek_experiment.py` | EXT  | Experiment with greek letter transfer learning                |
+| `live_digit.py`       | EXT  | Live webcam digit recognition with CNN inference              |
 
 ## Usage
 
